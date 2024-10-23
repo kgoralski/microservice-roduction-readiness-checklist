@@ -72,6 +72,7 @@ Diagnostic Context (MDC) is used. https://12factor.net/logs. Do not log any sens
 - [ ] **Resiliency**, dependencies failure check, connection/socket **timeouts**, **Retry Policies/circuit breakers** in place. Safe to retry - **idempotent** **calls** etc. (The timeout for external service should be equal to 99%ile of this dependency's latency when healthy plus some breathing room). You can consider using service mesh.
 - [ ] **Resiliency**, If needed introduce the patterns like **rate limiting** and **backpressure** and/or **load shedding** to avoid overloading the system and making it unavailable for all users 
 - [ ] **Resiliency**, implement **fallback logic** for every external dependency, for which this was possible and needed. Ask yourself “Is this resource needed to fulfill my business function, or can I (even partially) succeed without it?” (Remember that [Fallbacks can be tricky](https://nurkiewicz.com/2019/07/fallbacks-are-overrated-architecting.html) and implementing a **compensation job** might be required)
+- [ ] **Resiliency**, consider using **Cache**. A cache provides an answer to the caller even if the underlying tiers fail to do so. A cache can also limit the need to make expensive calls to external services
 - [ ] **Resource limits**: Contains limits for memory, CPU, disk space, and any other available resources in the agreed format.
 - [ ] **Artifact Managemen**t / Libraries & dependency proxy : JFROG Artifactory / Gitlab
 - [ ] **Discovery / DNS** configured
